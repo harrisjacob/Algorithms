@@ -2,7 +2,7 @@ CC=g++
 CFLAGS=-std=c++11
 
 
-Stable: testClassOut.cpp Teacher.h Student.h
+Stable: testClassOut.cpp Pool.h Teacher.h Student.h
 	$(CC) -o $@ $< $(CFLAGS)
 
 clean:

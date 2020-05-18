@@ -11,6 +11,7 @@ public:
 	~Student();
 	void setPref(int pref, Teacher* student);
 	Teacher* getPref();
+	bool isMatched();
 	Teacher* getMatched();
 	void setMatched(Teacher* teacher);
 	int getPrefPosition();
@@ -32,6 +33,10 @@ void Student::setPref(int pref, Teacher* teacher){
 }
 
 Teacher* Student::getPref(){ return preferences[prefPosition]; }
+
+bool Student::isMatched(){
+	return (matched) ? true : false;
+}
 
 Teacher* Student::getMatched(){ return matched; }
 
