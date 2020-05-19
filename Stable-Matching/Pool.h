@@ -1,7 +1,8 @@
-#include "Student.h"
+#include <iostream>
 #include "Teacher.h"
+#include "Student.h"
 
-template <class T> class Pool{
+template <typename T> class Pool{
 	private:
 		T* elements[10];
 	public:
@@ -10,7 +11,9 @@ template <class T> class Pool{
 		void setElemAt(T* element, int index);
 		T* getElemAt(int index);
 		int getIndexOf(T* element);
+		T* getElemByID(int id);
 		bool allMatched();
+		void printPool();
 };
 
 template <class T> Pool<T>::Pool():elements{nullptr}{}
@@ -35,10 +38,29 @@ int Pool<T>::getIndexOf(T* element){
 }
 
 template <class T>
+T* Pool<T>::getElemByID(int id){
+	for(T* elem : elements){
+		if(elem->getID() == id) return elem;
+	}
+	return NULL;
+}
+
+
+template <class T>
 bool Pool<T>::allMatched(){
 	for(int i=0;i<10;i++){
 		if(!elements[i]) return true; //Array is not filled
 		if(!(elements[i]->isMatched())) return false; //Unmatched found
 	}
 	return true;
+}
+
+template <class T>
+void Pool<T>::printPool(){
+	std::cout<<std::endl;
+	for(T* item : elements){
+		if(!item) break;
+		std::cout << *item;
+	}
+	std::cout<<std::endl;
 }
