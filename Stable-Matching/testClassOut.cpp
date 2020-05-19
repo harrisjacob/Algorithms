@@ -1,8 +1,5 @@
-
 #include <iostream>
 #include "Pool.h"
-
-using namespace std;
 
 int main(int argc, char** argv){
 
@@ -15,16 +12,24 @@ int main(int argc, char** argv){
 	TeacherPool->setElemAt(firstTeach, 0);
 	StudentPool->setElemAt(firstStudent, 0);
 
-	cout << "All students are matched: "<<StudentPool->allMatched()<<endl;
-	cout << "All teachers are matched: "<<TeacherPool->allMatched()<<endl;
+	firstStudent->setName("George");
+	firstStudent->setID(23);
+
+	std::cout << std::endl << *firstStudent << std::endl;
+
+
+	std::cout << "All students are matched: "<<StudentPool->allMatched()<<std::endl;
+	std::cout << "All teachers are matched: "<<TeacherPool->allMatched()<<std::endl;
 	
 	firstTeach->setMatched(firstStudent);
 	firstStudent->setMatched(firstTeach);
 
-	cout << "Preferred Position: "<<firstTeach->getPrefPosition()<<endl;
-	cout << "Address of student: "<<firstStudent<<endl;
-	cout << "Address of matched: "<<firstTeach->getMatched()<<endl;
-	cout << "All students are matched: "<<StudentPool->allMatched()<<endl;
-	cout << "All teachers are matched: "<<TeacherPool->allMatched()<<endl;
+	std::cout << "Preferred Position: "<<firstTeach->getPrefPosition()<<std::endl;
+	std::cout << "Address of student: "<<firstStudent<<std::endl;
+	std::cout << "Address of matched: "<<firstTeach->getMatched()<<std::endl;
+	std::cout << "All students are matched: "<<StudentPool->allMatched()<<std::endl;
+	std::cout << "All teachers are matched: "<<TeacherPool->allMatched()<<std::endl;
+
+	std::cout << std::endl << *firstStudent;
 
 }
