@@ -14,11 +14,21 @@ Student* Teacher::getPrefAt(int index){
 	return preferences[index];
 }
 
-Student* Teacher::getHighPref(){ return preferences[prefPosition]; }
+Student* Teacher::getHighPref(){ return preferences[prefPosition++]; }
+
+void Teacher::setHighPref(int hpref){ prefPosition = hpref; }
 
 void Teacher::setPref(int pref, Student* student){
 	preferences[pref] = student;
 }
+
+int Teacher::getPrefOf(Student* student){
+	for(int i=0; i < 10; i++){
+		if (preferences[i] == student) return i;
+	}
+	return 11;
+}
+
 
 std::string Teacher::getName(){
 	return Name;

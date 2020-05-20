@@ -15,7 +15,9 @@ public:
 	~Teacher();
 	Student* getPrefAt(int index);
 	Student* getHighPref();
+	void setHighPref(int hpref);
 	void setPref(int pref, Student* student);
+	int getPrefOf(Student* student);
 	std::string getName();
 	void setName(std::string name);
 	int getID();

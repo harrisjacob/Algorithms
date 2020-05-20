@@ -14,11 +14,21 @@ void Student::setPref(int pref, Teacher* teacher){
 	preferences[pref] = teacher;
 }
 
+int Student::getPrefOf(Teacher* teacher){
+	for(int i=0; i < 10; i++){
+		if (preferences[i] == teacher) return i;
+	}
+	return 11;
+}
+
+
 Teacher* Student::getPrefAt(int index){
 	return preferences[index];
 }
 
-Teacher* Student::getHighPref(){ return preferences[prefPosition]; }
+Teacher* Student::getHighPref(){ return preferences[prefPosition++]; }
+
+void Student::setHighPref(int hpref){ prefPosition = hpref; }
 
 bool Student::isMatched(){
 	return (matched) ? true : false;
