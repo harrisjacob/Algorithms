@@ -7,6 +7,15 @@
 
 enum Personel{isTeacher, isStudent};
 
+template <class T>
+void listPreferences(T* obj){
+	std::cout << obj->getName() << "'s Preferences: " << std::endl;
+	for(int i=0; i < 10; i++){
+
+		std::cout << *(obj->getPrefAt(i)) << std::endl;
+	}
+}
+
 template <class T, class S>
 void populateObject(T* editObject, std::string name, int id, std::string prefRaw, Pool<S>* OppositePool){
 	int prefIndex, prefID;
@@ -72,14 +81,11 @@ int main(int argc, char** argv){
 
 	Personel student = isStudent, teacher = isTeacher;
 
-	//if(student) printf("Student works");
-	//if(teacher) printf("Teacher works");
-
 	readIn(TeacherPool, StudentPool, TeacherRecords, teacher);
 	readIn(TeacherPool, StudentPool, StudentRecords, student);
 
 
-	/*
+	
 	Teacher* firstTeach = new Teacher();
 	Student* firstStudent = new Student();
 
@@ -105,11 +111,13 @@ int main(int argc, char** argv){
 	std::cout << "All teachers are matched: "<<TeacherPool->allMatched()<<std::endl;
 
 	std::cout << std::endl << *firstStudent << std::endl;
-	*/
+	
 	std::cout << "Printing Student Pool:" <<std::endl;
 	StudentPool->printPool();
 	std::cout << "Printing Teacher Pool:" <<std::endl;
 	TeacherPool->printPool();
-	
+
+
+	listPreferences(StudentPool->getElemAt(8));
 
 }

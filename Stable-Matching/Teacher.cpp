@@ -10,7 +10,11 @@ Teacher::Teacher():preferences{nullptr}{
 
 Teacher::~Teacher(){}
 
-Student* Teacher::getPref(){ return preferences[prefPosition]; }
+Student* Teacher::getPrefAt(int index){
+	return preferences[index];
+}
+
+Student* Teacher::getHighPref(){ return preferences[prefPosition]; }
 
 void Teacher::setPref(int pref, Student* student){
 	preferences[pref] = student;

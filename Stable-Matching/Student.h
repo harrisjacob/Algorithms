@@ -13,8 +13,9 @@ private:
 public:
 	Student();
 	~Student();
+	Teacher* getPrefAt(int index);
 	void setPref(int pref, Teacher* student);
-	Teacher* getPref();
+	Teacher* getHighPref();
 	std::string getName();
 	void setName(std::string newName);
 	int getID();

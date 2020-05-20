@@ -13,7 +13,8 @@ private:
 public:
 	Teacher();
 	~Teacher();
-	Student* getPref();
+	Student* getPrefAt(int index);
+	Student* getHighPref();
 	void setPref(int pref, Student* student);
 	std::string getName();
 	void setName(std::string name);
