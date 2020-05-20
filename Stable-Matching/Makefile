@@ -1,10 +1,10 @@
 CC=g++
 CFLAGS=-std=c++11
-SOURCES= Student.cpp Teacher.cpp 
+SOURCES= helpers/Student.cpp helpers/Teacher.cpp 
 
 
-Stable: testClassOut.cpp Student.cpp Teacher.cpp Pool.h
+GaleShapley: GaleShapley.cpp helpers/Student.cpp helpers/Teacher.cpp helpers/Pool.h helpers/helpFunctions.h
 	$(CC) -o $@ $< $(SOURCES) $(CFLAGS)
 
 clean:
-	rm Stable 
+	rm GaleShapley
