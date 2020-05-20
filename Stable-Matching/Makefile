@@ -1,9 +1,9 @@
 CC=g++
 CFLAGS=-std=c++11
-SOURCES= Student.cpp Teacher.cpp 
+SOURCES= helpers/Student.cpp helpers/Teacher.cpp 
 
 
-GaleShapley: GaleShapley.cpp Student.cpp Teacher.cpp Pool.h helpFunctions.h
+GaleShapley: GaleShapley.cpp helpers/Student.cpp helpers/Teacher.cpp helpers/Pool.h helpers/helpFunctions.h
 	$(CC) -o $@ $< $(SOURCES) $(CFLAGS)
 
 clean:
