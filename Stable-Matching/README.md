@@ -28,4 +28,5 @@ Realistically, stable matching is used in a wide variety of contexts.  Noteably,
 * Every student and teacher must have a unique ID.
 
 *Example entry: Charles 0 10 11 12 13 14 15 16 17 18 19*
+
 *Charles is a student because his ID (0) is in the range 0-9.*
