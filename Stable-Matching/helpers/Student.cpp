@@ -54,6 +54,7 @@ void Student::setMatched(Teacher* teacher){
 
 int Student::getPrefPosition(){ return prefPosition; }
 
+
 std::ostream & operator<<(std::ostream & os, Student & student){
 
         os << "Name: " <<student.getName() << std::endl;

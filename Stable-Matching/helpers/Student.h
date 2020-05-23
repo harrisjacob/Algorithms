@@ -26,7 +26,6 @@ public:
 	Teacher* getMatched();
 	void setMatched(Teacher* teacher);
 	int getPrefPosition();
-
 };
 
 
