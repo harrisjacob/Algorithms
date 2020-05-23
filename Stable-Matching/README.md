@@ -19,7 +19,7 @@ Datafiles can be randomized by running the **randomPools.py** python script.  Th
 The GaleShapely algorithm can be run by first compiling **GaleShapley.cpp** using the provided **Makefile**, then either running `./GaleShapley -s StudentData.txt -t TeacherData.txt` where student data is contained in **StudentData.txt** (indicated by the -s flag) and teacher data is contained in **TeacherData.txt** (indicated by the -t flag), or simply executing `./run.sh` to run the program with datafiles automatically specified.
 
 
-##Verification
+## Verification
 Once the algorithm completes, verification is run on the calculated results to determine whether there exists an unstable match.  The output of this verification immediately follows the algorithm output.
 
 
