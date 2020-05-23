@@ -43,16 +43,6 @@ void runGS(Pool<Teacher, Student>* tp, Pool<Student, Teacher>* sp){
 		}
 
 	}
-
-	//Student gets first preference
-	//Teacher responds maybe to the highest priorty and no to other
-	//Students and then in the teacher's class and the teacher then has the student
-
-	//Each student without a class applies for the next available class in their preferences
-	//If applied student is better than current student, teacher can upgrade and the
-	//origin student should then search for a new teacher (jilt)
-
-	//Repeat until everyone is paired
 }
 
 
@@ -98,6 +88,8 @@ int main(int argc, char** argv){
 	runGS(TeacherPool, StudentPool);
 	
 	printResults(StudentPool);
+
+	verifyStable(StudentPool);
 
 	return 0;
 }
