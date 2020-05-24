@@ -1,8 +1,8 @@
 CC=g++
 CFLAGS=-std=c++11
 
-testNode: testNode.cpp Node.h
-	$(CC) -o $@ $< Node.h $(CFLAGS)
+findCycle: findCycle.cpp Node.h helperFunctions.h
+	$(CC) -o $@ $^ $(CFLAGS)
 
 clean:
-	rm testNode
+	rm findCycle

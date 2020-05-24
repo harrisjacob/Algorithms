@@ -5,7 +5,7 @@ template <class T> class Node{
 	friend std::ostream& operator<<(std::ostream & os, Node<U> & node);
 	private:
 		T data;
-		Node* next;
+		Node<T>* next;
 	public:
 		Node();
 		Node(T data, Node* next);
