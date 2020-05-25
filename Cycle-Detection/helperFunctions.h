@@ -6,14 +6,14 @@
 #include "Node.h"
 
 
-bool checkNew(int val, Node<int>* head){
+Node<int>* checkNew(int val, Node<int>* head){
 	Node<int>* current = head;
 	while(current){
-		if(current->getData() == val) return 1;
+		if(current->getData() == val) return current;
 		current = current->getNext();
 	}
 
-	return 0;
+	return NULL;
 }
 
 Node<int>* readIn(std::string s){
@@ -22,19 +22,23 @@ Node<int>* readIn(std::string s){
 	std::ifstream myfile(s);
 	
 	Node<int>* head = new Node<int>();
-	Node<int> *current, *prev;
+	Node<int> *current, *prev, *tested;
 
 	myfile>>val;
 	head->setData(val);
 	prev = head;
 
 	while(myfile>>val){
-		if(checkNew(val, head)) return head;
+		if((tested = checkNew(val, head))){
+			prev->setNext(tested);
+			return head;
+		}
 		current = new Node<int>(val, nullptr);
 		prev->setNext(current);
 		prev = current;
 	}
-	
+	printf("%i\n",val);
+
 	return head;
 }
 
@@ -47,11 +51,18 @@ void printNodes(Node<int>* head){
 }
 
 
-void addTailLoop(Node<int>* head){
+void addTailLoop(Node<int>* head, int LoopDest){
 	if(!head) return;
+	
+	int elemCounter=0;
 	Node<int>* current = head;
+	Node<int>* dest = NULL;
 	while(current->getNext()){
+		if(elemCounter == LoopDest) dest = current;
 		current=current->getNext();
+		elemCounter++;
 	}
-	current->setNext(head);
+
+	if(!dest) dest = current;
+	current->setNext(dest);
 }
