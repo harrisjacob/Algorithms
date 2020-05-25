@@ -45,3 +45,13 @@ void printNodes(Node<int>* head){
 		current = current->getNext();
 	}
 }
+
+
+void addTailLoop(Node<int>* head){
+	if(!head) return;
+	Node<int>* current = head;
+	while(current->getNext()){
+		current=current->getNext();
+	}
+	current->setNext(head);
+}
