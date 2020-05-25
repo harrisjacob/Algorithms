@@ -37,7 +37,8 @@ Node<int>* readIn(std::string s){
 		prev->setNext(current);
 		prev = current;
 	}
-	
+	printf("%i\n",val);
+
 	return head;
 }
 

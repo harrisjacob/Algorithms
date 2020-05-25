@@ -11,6 +11,7 @@ void usage(char* prog){
 }
 
 void floyd(Node<int>* head){
+
 	Node<int> *tortise, *hare;
 	int startLoop=0, loopLength = 1;
 
