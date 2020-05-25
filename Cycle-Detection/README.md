@@ -1,10 +1,13 @@
 # Cycle Detection
 
 ## Description
+Cycle Detection involves finding loops or redundancies in a sequence of data.  Cycle detection algorithms typically output where a cycle begins and the length of the cycle, but could alternatively provide information such as elements of the cycle.
 
+For an in depth description and further information on cycle detection see the **Sources** section.
 
 
 ## Purpose
+The purpose of this project was to experiment with the implementation of basic graphs and known cycle detection algorithms.
 
 
 ## Algorithms
@@ -13,14 +16,14 @@
 
 ## Algorithmic Analysis
 
-| Aspect     | Time Complexity | Space Complexity     |
+|      | Time Complexity | Space Complexity     |
 | :----:       |    :----:   |      :---: |
 | Build Graph  |    O(n<sup>2</sup>)     | O(n)      |
 | Floyd's Algorithm     | O(n)       | O(1)  |
 | Brent's Algorithm  |    O(n)     | O(1)      |
 
 ## Sources
-[Cycle Detection](https://en.wikipedia.org/wiki/Cycle_detection "Cycle Detection")
+Wikipedia: [Cycle Detection](https://en.wikipedia.org/wiki/Cycle_detection "Cycle Detection")
 
 
 ## Use
@@ -29,6 +32,8 @@ The cycle detection program can be run by first compiling **findCycle.cpp** usin
 This feature is mainly used for algorithm testing purposes as specifying these values makes the output of the program trivial. Failing to specify a -l[index] value of unique data will lead to unpredictable results.
 
 For best use, specify a properly formatted datafile that contains at least one redundant integer.
+
+The algorithm can be specified using `-a [algorithm]` where algorithm is either "floyd" or "brent" (case insensitive). If the -a flag is not used, the program will default to using Floyd's algorithm.
 
 
 ## Datafile Information
