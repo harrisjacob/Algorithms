@@ -1,5 +1,4 @@
 #include "helperFunctions.h"
-
 void usage(char* prog){
 	std::cout << "Usage:" << std::endl;
 	std::cout << "\t-h\t help"<<std::endl;
@@ -34,7 +33,6 @@ void floyd(Node<int>* head){
 
 	std::cout << "Loop found starting at element index " << startLoop <<" with loop length "<<loopLength<<std::endl;
 
-
 }
 
 
@@ -46,10 +44,11 @@ int main(int argc, char** argv){
 	}
 
 	int opt;
+	int loopDest = 0;
 	std::string userFile;
 	bool addLoop = false;
 	//if help flag
-	while((opt = getopt(argc, argv, "hf:l")) != -1 ){
+	while((opt = getopt(argc, argv, "hf:l::")) != -1 ){
 		switch(opt){
 			case 'h':
 				usage(argv[1]);
@@ -59,6 +58,9 @@ int main(int argc, char** argv){
 				break;
 			case 'l':
 				addLoop = true;
+				if(optarg){
+					loopDest = std::stoi(optarg);
+				}
 				break;
 			default:
 				usage(argv[1]);
@@ -67,10 +69,10 @@ int main(int argc, char** argv){
 	}
 
 	Node<int>* head = readIn(userFile);
-
-	if(addLoop) addTailLoop(head);
-	floyd(head);
 	//printNodes(head);
+	//if(addLoop) addTailLoop(head, loopDest);
+	floyd(head);
+	
 
 	return EXIT_SUCCESS;
 }
