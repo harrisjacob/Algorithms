@@ -1,6 +1,5 @@
 #include <iostream>
 #include <limits>
-#include "mergeSort.h"
 
 struct Range{
 	int startIndex;
@@ -95,8 +94,8 @@ int main(int argc, char** argv){
 	Range* outputRange = findMaxSub(dailyChange, 0, dailyChangeLen-1);
 	
 	std::cout << "Maximum Subarray Result:"<<std::endl;
-	std::cout << "Buy before day " << outputRange->startIndex << " opens" << std::endl;
-	std::cout << "Sell after day " << outputRange->endIndex << " closes (before day " << (outputRange->endIndex)+1 << " opens)" << std::endl;
+	std::cout << "Buy at the beginning of day " << outputRange->startIndex << std::endl;
+	std::cout << "Sell at the end of day " << (outputRange->endIndex)+1 << std::endl;
 	std::cout << "Maximized profit: " << outputRange->value << std::endl;
 
 	free(outputRange);
