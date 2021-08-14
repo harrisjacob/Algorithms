@@ -27,6 +27,21 @@ int partition(int arr[], int start, int end, int part){
 	return i;
 }
 
+void insertionSort(int vals[], int len){
+
+	int key, pos;
+	for(int i=1; i<len; i++){
+		key = vals[i];
+		pos = i-1;
+		while (pos>0 && vals[pos]>=key){
+			vals[pos+1] = vals[pos];
+			pos--;
+		}
+		vals[pos+1] = key;
+	}
+
+}
+
 int select(int vals[], int rank){
 
 	return 0;
@@ -49,8 +64,8 @@ int main(int argc, char** argv){
 
 	printArray(vals, len);
 
-	int pos = partition(vals, 0, len-1, 8);
-	std::cout << pos << std::endl;
+	insertionSort(vals, len);
+	//std::cout << pos << std::endl;
 
 	printArray(vals, len);
 
