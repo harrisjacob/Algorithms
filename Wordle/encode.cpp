@@ -89,6 +89,27 @@ int main(int argc, char* argv[]){
 	outF.close();
 
 
+	//Write encoded words to a file
+	std::ofstream outWords;
+	outWords.open("encodedWords.txt");
+	if(!outWords.is_open()){
+		std::cerr << "Failed to write encoded words file\n";
+		outWords.close();
+		return 1;
+	}
+
+	for(auto& word: words){
+		int encoding=0;
+		for(char c: word){
+			encoding |= letterTranslation[c];
+		}
+
+		outWords << word << " " << encoding << "\n";
+	}
+
+	outWords.close();
+
+
 
 	return 0;
 
