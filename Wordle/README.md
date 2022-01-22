@@ -1,2 +1,2 @@
 # Wordle
-My attempt a creating a wordle solver
+My attempt at creating a wordle solver.
