@@ -4,22 +4,23 @@
 #include <sstream>
 #include <vector>
 #include <queue>
-#include <unordered_map>
+#include <cstdint>
 
 struct Letter{
 	int count = 0;
 	char val;
 };
 
-struct Comparator{
+struct LetterComparator{
 	bool operator()(Letter& l, Letter& r){
 		return l.count >= r.count;
 	}
 };
 
+
 int main(int argc, char* argv[]){
 
-	if(argc < 1){
+	if(argc < 2){
 		std::cerr << "Encoding requires a newline separated dictionary\n";
 		return 1;
 	}
@@ -60,18 +61,11 @@ int main(int argc, char* argv[]){
 	}
 
 	//Sort the letters by their frequency
-	std::priority_queue<Letter, std::vector<Letter>, Comparator> pq;
+	std::priority_queue<Letter, std::vector<Letter>, LetterComparator> pq;
 	for(auto& letter: letterFreq){
 		pq.push(letter);
 	}
 
-	//Assign a value according to 2^(26-k) where k is the rank (k=0 is the most popular letter, k=25 is the least popular)
-	std::unordered_map<char, int> letterTranslation;
-	int count=0;
-	while(!pq.empty()){
-		letterTranslation[pq.top().val] = 1 << (count++);
-		pq.pop();
-	}
 
 	//Write the encoding key to a file
 	std::ofstream outF;
@@ -82,12 +76,41 @@ int main(int argc, char* argv[]){
 		return 1;
 	}
 
-	for(auto& item: letterTranslation){
-		outF << item.first << " " << item.second << "\n";
+
+	//Write value to encoding key file - see README.md
+	int letterTranslation[26] = {0};
+
+	int count=0;
+	while(!pq.empty()){
+		char c = pq.top().val; pq.pop();
+		letterTranslation[c-'a'] = 1 << count++;
+		outF << c << " " << letterTranslation[c-'a'] << "\n";
 	}
+
 
 	outF.close();
 
+
+	//Encode words and sort words - see README.md
+	std::priority_queue<uint64_t> encodingPQ;	
+
+	for(auto& word: words){
+		uint64_t encoding=0x7FFC000000;
+
+		//Encode the letters that are contained
+		for(char c: word){
+			encoding |= letterTranslation[c-'a'];
+		}
+
+		//Encode the word itself
+		for(char c: word){
+			encoding = encoding << 5;
+			encoding |= c - 'a';
+		}
+
+		encodingPQ.push(encoding);
+
+	}
 
 	//Write encoded words to a file
 	std::ofstream outWords;
@@ -98,13 +121,9 @@ int main(int argc, char* argv[]){
 		return 1;
 	}
 
-	for(auto& word: words){
-		int encoding=0;
-		for(char c: word){
-			encoding |= letterTranslation[c];
-		}
-
-		outWords << word << " " << encoding << "\n";
+	while(!encodingPQ.empty()){
+		outWords << encodingPQ.top()<<"\n"; 
+		encodingPQ.pop();
 	}
 
 	outWords.close();
