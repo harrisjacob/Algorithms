@@ -142,11 +142,6 @@ int main(int argc, char* argv[]){
 
 	while(correctLetters < 5){
 
-		std::cout << "Can have: " << canHave << std::endl;
-		std::cout << "Cannot have: " << cannotHave << std::endl;
-		std::cout << "Exactly: " << exactly << std::endl;
-		std::cout << "Exactly mask: " << exactlyMask << std::endl;
-
 		suggestion = 0;
 
 		prev = head;
