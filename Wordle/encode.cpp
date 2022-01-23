@@ -69,7 +69,7 @@ int main(int argc, char* argv[]){
 
 	//Write the encoding key to a file
 	std::ofstream outF;
-	outF.open("encodingKey.txt");
+	outF.open("encode/encodingKey.txt");
 	if(!outF.is_open()){
 		std::cerr << "Failed to write encoding key file\n";
 		outF.close();
@@ -114,7 +114,7 @@ int main(int argc, char* argv[]){
 
 	//Write encoded words to a file
 	std::ofstream outWords;
-	outWords.open("encodedWords.txt");
+	outWords.open("encode/encodedWords.txt");
 	if(!outWords.is_open()){
 		std::cerr << "Failed to write encoded words file\n";
 		outWords.close();
